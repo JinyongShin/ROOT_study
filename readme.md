@@ -36,7 +36,7 @@
 Enter Enter....  
 >ls  
   
-id_dsa.pub: public key  
-copy this and paste to github/your profile/Edit profile/SSH
+#### id_dsa.pub: public key  
+#### copy this and paste to github/your profile/Edit profile/SSH
 ---
 
