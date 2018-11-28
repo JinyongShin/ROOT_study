@@ -7,24 +7,24 @@
 ### Basic usage of github
 
 #### Initial Setting: We need this to start git  
-####git config --global user.name >"Your Name Here">  
-####git config --global user.email >"your_email@youremail.com">  
+#### git config --global user.name >"Your Name Here">  
+#### git config --global user.email >"your_email@youremail.com">  
   
-####Cloning the existed repository in github  
-####git clone address-of-the-repository  
+#### Cloning the existed repository in github  
+#### git clone address-of-the-repository  
 : copy the repository from the github to your loacl cpu  
   
-####Making your own local repository  
-####I assume that you aleady make the online repository on github  
-####git init  
+#### Making your own local repository  
+#### I assume that you aleady make the online repository on github  
+#### git init  
 : Initialize the directory to use the git command  
-####git remote add origin address-of-the-online-repository  
+#### git remote add origin address-of-the-online-repository  
 : It connect the online repository and your local repository  
-####git add files-to-uploaded  
-####git commit  
-####git push  (use <"git push origin master"< when you first upload the files)
+#### git add files-to-uploaded  
+#### git commit  
+#### git push  (use <"git push origin master"< when you first upload the files)
 : This make the files to updated on github  
-####git pull  
+#### git pull  
 : Update the repository  
 : It makes your local repository become same condition to your online repository(git hub)  
   
