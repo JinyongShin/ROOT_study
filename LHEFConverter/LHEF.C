@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void test(){
+void LHEF(){
 
    // --Load Lib
    // -- Edit yours...
