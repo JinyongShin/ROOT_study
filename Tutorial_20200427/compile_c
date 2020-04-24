@@ -1,0 +1,13 @@
+## Arg: source code
+
+## -- header file
+export PATH=/home/ico1036/Generator/Delphes-3.4.2/classes:$PATH
+
+## -- lib file
+export LD_LIBRARY_PATH=/home/ico1036/Generator/Delphes-3.4.2:$LD_LIBRARY_PATH
+
+## compile it
+# -I(location of header) -L(location of lib.so) 
+g++ `root-config --cflags` `root-config --libs` $1.C -I/home/ico1036/Generator/Delphes-3.4.2/classes -L/home/ico1036/Generator/Delphes-3.4.2 -lDelphes -o $1.exe
+
+
