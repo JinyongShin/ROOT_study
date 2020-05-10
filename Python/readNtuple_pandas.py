@@ -19,8 +19,8 @@ def Ntuple2array(filename,treename):
 
 data = Ntuple2array("ntuple.root","mytree")
 
-
-
+branch_name_1 = "signal"
+data_br_1	  = data[branch_name_1]
 
 # --Draw hist
 import matplotlib
@@ -38,7 +38,7 @@ plt.grid(which='major', linestyle='-')
 plt.minorticks_on()
 
 bins = 200
-plt.hist(data["gaus"],bins=bins,histtype='step',linewidth=3,color="royalblue")
+plt.hist(data_br_1,bins=bins,histtype='step',linewidth=3,color="royalblue")
 #plt.show()
 plt.savefig("gaus.png")
 

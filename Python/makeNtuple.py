@@ -1,24 +1,22 @@
-import ROOT as rt
-from array import array
-
-sigma = 2.5
-mean = 91
-
-## Define output file name
-f = rt.TFile("ntuple.root","RECREATE")
-
-## Define Tree name
-tree = rt.TTree("mytree","mytree")
-
-## Define branch name
-array_gaus = array('f',[0])
-tree.Branch("gaus",array_gaus,'gaus/F')
-
-## Fill tree
-for i in range(50000):
-	array_gaus[0] = rt.gRandom.Gaus(mean,sigma)
-	tree.Fill()
+from rootpy.tree import Tree
+from rootpy.io import root_open
+from random import gauss
 
 
-## Write file
-f.Write()
+f = root_open("ntuple.root", "recreate")
+
+tree = Tree("mytree")
+tree.create_branches(
+	{'signal' : 'F'}
+)
+
+
+mean = 91.
+sigma = 2.
+
+for i in range(10000):
+	tree.signal = gauss(mean,sigma)
+	tree.fill()
+
+tree.write()
+f.close()
