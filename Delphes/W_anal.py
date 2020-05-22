@@ -80,7 +80,7 @@ if args.save:
 
 # -- EventLoop Ends
 
-# --Show histogram
+# --Show histogram using TCanvas
 if (not args.save and args.TCanvas ):
 
 	c1 = ROOT.TCanvas()
@@ -90,8 +90,10 @@ if (not args.save and args.TCanvas ):
 	histMass.Draw()
 	dummy=input("Press Enter to continue...")
 
+
+# --Show histogram using Matplotlib
 if (not args.save and not args.TCanvas):
-	# --set parametres for plotting
+	# Set parametres for plotting
 	plt.rcParams["figure.figsize"] = (10,6)
 	plt.rc('xtick', labelsize=15)
 	plt.rc('ytick', labelsize=15)
@@ -101,7 +103,7 @@ if (not args.save and not args.TCanvas):
 	
 	plt.grid(which='major', linestyle='-.')
 	
-	# --draw hist
+	# Draw hist
 	rplt.hist(histMass,linewidth=3, color="royalblue",label="W transverse mass")
 	plt.xticks([20,40,60,80,100,120,140,160,180,200])
 	plt.yticks([20,40,60,80,100,120,140,160])
