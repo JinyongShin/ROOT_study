@@ -1,23 +1,21 @@
-import ROOT
 import argparse
-
-
-## --Developing ------>
-'''
-# rootpy for histograming
+from rootpy.io import root_open
+import rootpy.ROOT as ROOT
 from rootpy.plotting import Hist, HistStack, Legend, Canvas
-
-# rootpy for matplotlib 
 import rootpy.plotting.root2matplotlib as rplt
 import matplotlib.pyplot as plt
-'''
-## <--------------------
 
 # --Setup parser
 parser = argparse.ArgumentParser()
 parser.add_argument('infile', type=str,
-            help="Add your input rootfile path")
+            help="python W_anal.pyyour INPUT_ROOTFILE_PATH")
+parser.add_argument('--save', type=bool,default=False,
+            help="--save True/False")
+parser.add_argument('--TCanvas', type=bool,default=False,
+            help="--TCanvas True/False")
+
 args = parser.parse_args()
+
 
 
 
@@ -32,8 +30,11 @@ except:
 
 
 
-# Read File
+# Read & Write File
 inputFile = args.infile
+
+if args.save:
+	outputFile = root_open("Wmass.root","recreate")
 
 # Create chain of root trees
 chain = ROOT.TChain("Delphes")
@@ -71,30 +72,42 @@ for entry in range(0, numberOfEntries):
 	# Plot their transverse mass
 	histMass.Fill(TVmass)
 
+
+# I/O
+if args.save:
+	outputFile.write()
+	outputFile.close()
+
 # -- EventLoop Ends
 
 # --Show histogram
-c1 = ROOT.TCanvas()
-c1.cd()
-histMass.GetXaxis().SetTitle("M_{T}")
-histMass.GetYaxis().SetTitle("Events")
-histMass.Draw()
-input("Press Enter to continue...")
+if (not args.save and args.TCanvas ):
+
+	c1 = ROOT.TCanvas()
+	c1.cd()
+	histMass.GetXaxis().SetTitle("M_{T}")
+	histMass.GetYaxis().SetTitle("Events")
+	histMass.Draw()
+	dummy=input("Press Enter to continue...")
+
+if (not args.save and not args.TCanvas):
+	# --set parametres for plotting
+	plt.rcParams["figure.figsize"] = (10,6)
+	plt.rc('xtick', labelsize=15)
+	plt.rc('ytick', labelsize=15)
+	plt.title("Transverse mass", fontsize=25)
+	plt.xlabel("$M_{T}$",fontsize=15)
+	plt.ylabel("Events",fontsize=15)
+	
+	plt.grid(which='major', linestyle='-.')
+	
+	# --draw hist
+	rplt.hist(histMass,linewidth=3, color="royalblue",label="W transverse mass")
+	plt.xticks([20,40,60,80,100,120,140,160,180,200])
+	plt.yticks([20,40,60,80,100,120,140,160])
+	plt.legend()
+	plt.show()
 
 
 
-#### Developing ------------------------------>
-'''
-## --set parametres for plotting
-plt.rcParams["figure.figsize"] = (7,5)
-plt.rc('xtick', labelsize=20)
-plt.rc('ytick', labelsize=20)
-plt.title("Transverse mass", fontsize=20)
-plt.grid(which='major', linestyle='-')
-plt.minorticks_on()
 
-## --draw hist
-rplt.hist(histMass, linewidth=3, color="royalblue")
-plt.show()
-'''
-## <-----------------------------------------------
