@@ -105,8 +105,8 @@ if (not args.save and not args.TCanvas):
 	
 	# Draw hist
 	rplt.hist(histMass,linewidth=3, color="royalblue",label="W transverse mass")
-	plt.xticks([20,40,60,80,100,120,140,160,180,200])
-	plt.yticks([20,40,60,80,100,120,140,160])
+	plt.xticks([0,20,40,60,80,100,120,140,160,180,200])
+	plt.yticks([0,20,40,60,80,100,120,140,160])
 	plt.legend()
 	plt.show()
 
