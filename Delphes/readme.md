@@ -20,6 +20,7 @@ sed -i -e 's/c++0x/c++1y/g' Makefile
 ```  
 You need to install the Pythia8 locally in this step.  
 Please move to the 3rd step after successfully install the Pythia8  
+Also, you should make 3 different directories separately ex) Madgraph Pythia8 Delphes  
 * [Install Pyhtia link](http://home.thep.lu.se/Pythia/)  
 
 ## 3. Setup Pythia8 to link with Delphes  
