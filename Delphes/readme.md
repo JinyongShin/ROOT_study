@@ -16,8 +16,7 @@ cd Delphes3.4.2
 git checkout tags/3.4.2pre15
 ./configure
 ## -- c++ setup modifying in MakeFile
-sed -i -e 's/c++0x/c++1y/g'
-Makefile
+sed -i -e 's/c++0x/c++1y/g' Makefile
 ```  
 You need to install the Pythia8 locally in this step.  
 Please move to the 3rd step after successfully install the Pythia8  
